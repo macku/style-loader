@@ -23,6 +23,7 @@ loaderApi.pitch = function loader(request) {
       ? JSON.stringify(options.insert)
       : options.insert.toString();
   const injectType = options.injectType || "styleTag";
+  const { styleTagTransform } = options;
   const esModule =
     typeof options.esModule !== "undefined" ? options.esModule : true;
   const runtimeOptions = {
@@ -287,6 +288,7 @@ options.singleton = ${isSingleton};
 options.specificApi = ${isSingleton}
   ? { applyToSingletonTag: ${applyToSingletonTag} }
   : { applyToTag: ${applyToTag}, removeStyleElement: ${removeStyleElement} };
+options.styleTagTransform = ${isSingleton} ? undefined : ${styleTagTransform};
 
 var update = api(content, options);
 
